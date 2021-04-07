@@ -83,4 +83,24 @@ int main()
     for(j=0;j<500;j++){
         printf("%f\n", data[j]);
     }
+    //continue to draw wave.
+    while(1){
+        if(i<up_twaste){
+            triwave = (uint16_t)(65535 * 3/3.3 * i/up_twaste);
+            aout.write_u16(triwave);
+        }else if(i<remain_twaste + up_twaste){
+            triwave = (uint16_t)(65535 * 3/3.3 * 1);
+            aout.write_u16(triwave);
+        }else{
+            triwave = (uint16_t)(65535 * 3/3.3 - (65535 * 3/3.3 * (i-up_twaste-remain_twaste)/down_twaste));
+            aout.write_u16(triwave);
+        }   
+        
+        if(i<(up_twaste + down_twaste + remain_twaste)-1){
+            i++;
+        }else{
+            i=0;
+        }
+        wait_us(2000);// 240ms period
+    }
 }
