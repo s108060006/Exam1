@@ -6,6 +6,7 @@ DigitalIn mypin2(D9);
 DigitalIn mypin3(D10);
 AnalogOut aout(PA_4); // D7
 AnalogIn Ain(A0);
+InterruptIn sw2(USER_BUTTON);
 
 uLCD_4DGL uLCD(D1, D0, D2);
 
@@ -76,7 +77,7 @@ int main()
         }else{
             i=0;
         }
-        j++;
+        //j++;
         wait_us(2000);// 240ms period
     }
     for(j=0;j<500;j++){
