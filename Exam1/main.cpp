@@ -77,7 +77,7 @@ int main()
         }else{
             i=0;
         }
-        //j++;
+        j++;
         wait_us(2000);// 240ms period
     }
     for(j=0;j<500;j++){
